@@ -53,7 +53,7 @@ Seguiremos boas práticas de validação e tratamento de erros, utilizando bibli
 4.  **models/**:
     *   Armazena os modelos do banco de dados (usando Sequelize, por exemplo). Esses modelos representam as tabelas no banco de dados e definem as interações com os dados.
 5.  **routes/**:
-    *   Define as rotas da API. Cada arquivo contém as rotas relacionadas a uma entidade, como `migrantes`, `autenticação`, etc. O arquivo `index.js` combina todas as rotas para serem usadas no `app.js`.
+    *   Define as rotas da API. Cada arquivo contém as rotas relacionadas a uma entidade, como `migrantes`, `autenticação`, etc.
 6.  **services/**:
     *   Contém a lógica de negócio que é chamada pelos controladores. Eles geralmente lidam com operações mais complexas que envolvem interações com o banco de dados e outras camadas da aplicação.
 7.  **tests/**:
@@ -215,7 +215,7 @@ Abaixo estão as rotas principais para as operações CRUD:
     #### Armazenamento de token (Mobile):
     
     *   Após o login na aplicação mobile, o token JWT será armazenado localmente, permitindo um login persistente.
-    *   Caso o token expire, o usuário será deslogado automaticamente e solicitado um novo login.
+    *   O usuário será deslogado se ele fizer isso manualmente.
 
 ---
 
@@ -252,7 +252,7 @@ Realizaremos testes de todas as rodas da API utilizando o Postman, Os testes inc
 
 ### 10\. Segurança
 
-Devemos garantir a segurança da API REST mesmo não tendo dados extremamente sensíveis  e mesmo em cenários onde o número de usuários é reduzido. As seguintes práticas recomendadas podem ser implementas para fortalecer a segurança:
+Devemos garantir a segurança da API REST mesmo não tendo dados extremamente sensíveis e mesmo em cenários onde o número de usuários é reduzido. As seguintes práticas recomendadas podem ser implementas para fortalecer a segurança:
 
 #### Autenticação e Autorização
 
@@ -261,7 +261,7 @@ Devemos garantir a segurança da API REST mesmo não tendo dados extremamente se
 
 #### Criptografia de dados
 
-*   Hash de Senhas: Utilizaremos o bcrypt para isso.
+*   Hash de Senhas: Utilizaremos o bcrypt para isso. A senha será gerada possuindo 8 caracteres. Ex: 12737193.
 
 #### Validação de dados
 
