@@ -42,6 +42,28 @@ Seguiremos boas práticas de validação e tratamento de erros, utilizando bibli
 
 ![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/805623d6998d56e919fbb97221b98282dd88a21d5111e3d8.png)
 
+#### Descrição dos Diretórios:
+
+1.  **config/**:
+    *   Armazena configurações da aplicação, como a conexão com o banco de dados, variáveis relacionadas à autenticação e outras configurações gerais.
+2.  **controllers/**:
+    *   Contém os “controladores”, que são responsáveis por receber as requisições, processá-las e devolver as respostas adequadas. Eles geralmente fazem chamadas para os serviços.
+3.  **middlewares/**:
+    *   Contém middlewares para tarefas específicas, como autenticação, validação de tokens JWT, limitação de requisições (rate limiting), etc.
+4.  **models/**:
+    *   Armazena os modelos do banco de dados (usando Sequelize, por exemplo). Esses modelos representam as tabelas no banco de dados e definem as interações com os dados.
+5.  **routes/**:
+    *   Define as rotas da API. Cada arquivo contém as rotas relacionadas a uma entidade, como `migrantes`, `autenticação`, etc. O arquivo `index.js` combina todas as rotas para serem usadas no `app.js`.
+6.  **services/**:
+    *   Contém a lógica de negócio que é chamada pelos controladores. Eles geralmente lidam com operações mais complexas que envolvem interações com o banco de dados e outras camadas da aplicação.
+7.  **tests/**:
+    *   Armazena os testes unitários e de integração. Podemos utilizar bibliotecas como `Mocha` e `Chai` para testar as funcionalidades da API.
+8.  **utils/**:
+    *   Contém funções auxiliares e utilitárias, como validadores e constantes usadas ao longo do projeto.
+9.  **app.js**:
+    *   Arquivo principal da aplicação. Aqui o servidor é configurado, middlewares são aplicados e as rotas são carregadas.
+
+
 ---
 
 ### 4\. Configurações do Banco de dados
