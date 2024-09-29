@@ -34,7 +34,7 @@ Seguiremos boas práticas de validação e tratamento de erros, utilizando bibli
 
 ---
 
-### 3\. Estrutura do Projeto 
+### 3\. Estrutura do Projeto
 
 #### Diretórios:
 
@@ -53,9 +53,9 @@ Seguiremos boas práticas de validação e tratamento de erros, utilizando bibli
 *   Porta: `5432`
 *   Dialeto: `postgres`
 *   Usuário: `db_user`
-*   Senha: `db_`password
+*   Senha: `db_password`
 
-As variáveis de ambiente (`DB_NOME, DB_USUARIO, DB_SENHA, DB_HOST`) serão definiidas em um arquivo .`env`.
+As variáveis de ambiente (`DB_NOME, DB_USUARIO, DB_SENHA, DB_HOST`) serão definidas em um arquivo `.env`.
 
 ---
 
@@ -148,32 +148,32 @@ CREATE TABLE migrante(
 
 ### 6\. Rotas principais da API
 
-Abaixo estão as rodas principais para as operações CRUD:
+Abaixo estão as rotas principais para as operações CRUD:
 
 #### Rotas de Migrantes:
 
 | Operação | Rota | Função |
 | --- | --- | --- |
-| GET | `**/migrantes**` | Lista todos os migrantes |
-| POST | `**/migrantes**` | Cria um novo migrante |
-| PUT | `**/migrantes/:id**` | Atualiza os dados de um migrante |
-| DELETE | `**/migrantes/:id**` | Deleta um migrante específico |
+| GET | **/migrantes** | Lista todos os migrantes |
+| POST | **/migrantes** | Cria um novo migrante |
+| PUT | **/migrantes/:id** | Atualiza os dados de um migrante |
+| DELETE | **/migrantes/:id** | Deleta um migrante específico |
 
 #### Rotas de Organizações:
 
 | Operação | Rota | Função |
 | --- | --- | --- |
-| GET | `**/organizacoes**` | Lista todas as organizações |
-| POST | `**/organizacoes**` | Cria uma nova organização |
-| PUT | `**/organizacoes/:id**` | Atualiza os dados de uma organização |
-| DELETE | `**/organizacoes/:id**` | Deleta uma organização específica |
+| GET | **/organizacoes** | Lista todas as organizações |
+| POST | **/organizacoes** | Cria uma nova organização |
+| PUT | **/organizacoes/:id** | Atualiza os dados de uma organização |
+| DELETE | **/organizacoes/:id** | Deleta uma organização específica |
 
-#### Rodas de Autenticação:
+#### Rotas de Autenticação:
 
 | Operação | Rota | Função |
 | --- | --- | --- |
-| POST | `**/login**` | Realiza login e gera um token JWT |
-| POST | `**/cadastrar**` | Cria um novo usuário com hash de senha |
+| POST | **/login** | Realiza login e gera um token JWT |
+| POST | **/cadastrar** | Cria um novo usuário com hash de senha |
 
 ---
 
@@ -201,7 +201,7 @@ Abaixo estão as rodas principais para as operações CRUD:
 
 Utilizaremos middleware para validação de entradas e tratamento de erros.
 
-#### Validação de dados 
+#### Validação de dados
 
 → Utilizaremos o **Joi** para fazer a validação.
 
@@ -211,9 +211,11 @@ Utilizaremos middleware para validação de entradas e tratamento de erros.
 
 #### HTTP Códigos de Status
 
+→ Todas as respostas serão acompanhadas com os seus devidos status. 
+
 ![HTTP: Response status code. Aprendi uma coisa: só se conhece… | by Maycon  Alves | React Brasil | Medium](https://miro.medium.com/v2/resize:fit:920/1*yrMWEpUC-hXED7oGD0j2og.jpeg)
 
-### 9\. Testes com Postamn
+### 9\. Testes com Postman
 
 Realizaremos testes de todas as rodas da API utilizando o Postman, Os testes incluirão:
 
