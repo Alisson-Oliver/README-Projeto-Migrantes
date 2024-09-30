@@ -1,14 +1,16 @@
 ## Documentação do Backend - MigraHelp
 
-### 1\. Introdução
+### 1\.🔍 Introdução 
 
 O backend da aplicação **MigraHelp** será responsável por gerenciar todas as operações relacionadas aos usuários (migrantes e organizações), autenticação, armazenamento de dados e fornecimento da API REST para comunicação com dois aplicativos (um para as organizações e outro para os migrantes). A API REST será desenvolvida com **Node.js** e utilizaremos **PostgreSQL** como banco de dados relacional para armazenar as informações de usuários e entidades. O banco de dados será hospedado no **Tembo**.
 
+**Objetivo do projeto:** trata-se de um app para conectar o migrante às organizações comunitárias e instituições e ongs de amparo ao migrante, e uma agenda cultural para integrar o migrante à comunidade de Salvador.
+
 ---
 
-### 2\. Ferramentas e Tecnologias
+### 2\.⚙️ Ferramentas e Tecnologias
 
-Para a construção da API REST, utilizaremos **Node.js**. Os principais módulos que consideramos essenciais para o projeto são:
+Para a construção da API REST, utilizaremos **Node.js**. Os módulos que usaremos para o projeto são:
 
 *   **Express.js**: Framework para criar APIs REST, facilitando o roteamento e a manipulação de requisições.
 *   **pg**: Driver oficial do PostgreSQL para Node.js, que permite interações com o banco de dados.
@@ -18,10 +20,12 @@ Para a construção da API REST, utilizaremos **Node.js**. Os principais módulo
 *   **Dotenv**: Gerenciador de variáveis de ambiente que permite armazenar de forma segura chaves secretas e credenciais do banco de dados sem deixá-las expostas no código.
 *   **Axios**: Biblioteca para consumir APIs externas, facilitando a comunicação entre a aplicação e serviços de terceiros.
 *   **Mocha/Chai**: Ferramentas de testes unitários que serão utilizadas juntas para garantir o funcionamento correto da API.
+*   **Joi**: Biblioteca de validação de dados que facilita a definição de esquemas para validar a estrutura e os tipos de dados recebidos nas requisições, garantindo que os dados atendam a critérios específicos antes de serem processados.
+*   **generate-password:** Módulo que permite gerar senhas seguras e personalizadas, oferecendo opções para especificar o comprimento da senha, incluir caracteres especiais, letras maiúsculas e minúsculas, e números.
 
 _Além dos módulos acima, outros pacotes poderão ser utilizados conforme necessário para atender aos requisitos do projeto._
 
-### Ferramentas Adicionais
+### ➕ Ferramentas Adicionais
 
 Além dos módulos essenciais, utilizaremos as seguintes ferramentas para auxiliar no desenvolvimento e validação da API:
 
@@ -34,7 +38,7 @@ Seguiremos boas práticas de validação e tratamento de erros, utilizando bibli
 
 ---
 
-### 3\. Estrutura do Projeto
+### 3\. 📁 Estrutura do Projeto
 
 #### Diretórios:
 
@@ -63,10 +67,9 @@ Seguiremos boas práticas de validação e tratamento de erros, utilizando bibli
 9.  **app.js**:
     *   Arquivo principal da aplicação. Aqui o servidor é configurado, middlewares são aplicados e as rotas são carregadas.
 
-
 ---
 
-### 4\. Configurações do Banco de dados
+### 4\.🗄️ Configurações do Banco de dados
 
 #### Banco de Dados: PostgreSQL
 
@@ -79,9 +82,20 @@ Seguiremos boas práticas de validação e tratamento de erros, utilizando bibli
 
 As variáveis de ambiente (`DB_NOME, DB_USUARIO, DB_SENHA, DB_HOST`) serão definidas em um arquivo `.env`.
 
+#### Exemplo da .env:
+
+```plaintext
+DB_NOME=migrantes_db
+DB_HOST=tembo.io
+DB_PORTA=5432
+DB_DIALETO=postgres
+DB_USUARIO=postgres
+DB_SENHA=senhaSegura123
+```
+
 ---
 
-### 5\. Estrutura do Banco de Dados
+### 5\.🗃️ Estrutura do Banco de Dados
 
 _O diagrama ainda está em fase de modificações…_
 
@@ -168,38 +182,52 @@ CREATE TABLE migrante(
 
 ---
 
-### 6\. Rotas principais da API
+### 6\.🔁 Rotas principais da API
 
 Abaixo estão as rotas principais para as operações CRUD:
 
 #### Rotas de Migrantes:
 
-| Operação | Rota | Função |
-| --- | --- | --- |
-| GET | **/migrantes** | Lista todos os migrantes |
-| POST | **/migrantes** | Cria um novo migrante |
-| PUT | **/migrantes/:id** | Atualiza os dados de um migrante |
-| DELETE | **/migrantes/:id** | Deleta um migrante específico |
+| Operação | Rota | Função | Status Code |
+| --- | --- | --- | --- |
+| GET | **/migrantes** | Lista todos os migrantes | 200 OK, 404 Not Found |
+| POST | **/migrantes** | Cria um novo migrante | 201 Created, 400 Bad Request |
+| PUT | **/migrantes/:id** | Atualiza os dados de um migrante | 200 OK, 404 Not Found, 400 Bad Request |
+| DELETE | **/migrantes/:id** | Deleta um migrante específico | 204 No Content, 404 Not Found |
 
 #### Rotas de Organizações:
 
-| Operação | Rota | Função |
-| --- | --- | --- |
-| GET | **/organizacoes** | Lista todas as organizações |
-| POST | **/organizacoes** | Cria uma nova organização |
-| PUT | **/organizacoes/:id** | Atualiza os dados de uma organização |
-| DELETE | **/organizacoes/:id** | Deleta uma organização específica |
+| Operação | Rota | Função | Status Code |
+| --- | --- | --- | --- |
+| GET | **/organizacoes** | Lista todas as organizações | 200 OK, 404 Not Found |
+| POST | **/organizacoes** | Cria uma nova organização | 201 Created, 400 Bad Request |
+| PUT | **/organizacoes/:id** | Atualiza os dados de uma organização | 200 OK, 404 Not Found, 400 Bad Request |
+| DELETE | **/organizacoes/:id** | Deleta uma organização específica | 204 No Content, 404 Not Found |
 
 #### Rotas de Autenticação:
 
-| Operação | Rota | Função |
-| --- | --- | --- |
-| POST | **/login** | Realiza login e gera um token JWT |
-| POST | **/cadastrar** | Cria um novo usuário com hash de senha |
+| Operação | Rota | Função | Status Code |
+| --- | --- | --- | --- |
+| POST | **/login** | Realiza login e gera um token JWT | 200 OK, 401 Unauthorized, 400 Bad Request |
+| POST | **/cadastrar** | Cria um novo usuário com hash de senha | 201 Created, 400 Bad Request, 409 Conflict |
+
+#### HTTP Códigos de Status
+
+**Status de Resposta**:
+
+*   **200 OK**: Requisição bem-sucedida.
+*   **201 Created**: Recurso criado com sucesso.
+*   **204 No Content**: Requisição bem-sucedida, mas sem conteúdo retornado.
+*   **400 Bad Request**: A requisição contém erros de validação.
+*   **401 Unauthorized**: Falha na autenticação.
+*   **404 Not Found**: Recurso não encontrado.
+*   **409 Conflict**: Conflito com o estado atual do recurso.
+*   → Todas as respostas serão acompanhadas com os seus devidos status.
+   ![HTTP: Response status code. Aprendi uma coisa: só se conhece… | by Maycon  Alves | React Brasil | Medium](https://miro.medium.com/v2/resize:fit:920/1*yrMWEpUC-hXED7oGD0j2og.jpeg)
 
 ---
 
-### 7\. Autenticação e Armazenamento de Tokens
+### 7\.🚦 Autenticação e Armazenamento de Tokens
 
 #### JSON (JSON WEB TOKEN)
 
@@ -219,7 +247,7 @@ Abaixo estão as rotas principais para as operações CRUD:
 
 ---
 
-### 8\. Validação e Tratamento de Erros
+### 8\.🛠️ Validação e Tratamento de Erros
 
 Utilizaremos middleware para validação de entradas e tratamento de erros.
 
@@ -231,13 +259,16 @@ Utilizaremos middleware para validação de entradas e tratamento de erros.
 
 → Um middleware será utilizado para capturar erros não tratados e retornar respostas adequadas.
 
-#### HTTP Códigos de Status
+#### Fluxo proposto para o cadastro de um usuário:
 
-→ Todas as respostas serão acompanhadas com os seus devidos status. 
+1.  **Gerar uma senha numérica** de **8 dígitos** usando o módulo `generate-password`.
+2.  **Validar os dados de entrada** e a senha gerada usando o `Joi`.
+3.  **Criptografar a senha** gerada usando o `bcrypt`.
+4.  **Salvar o usuário no banco de dados** com o Sequelize.
 
-![HTTP: Response status code. Aprendi uma coisa: só se conhece… | by Maycon  Alves | React Brasil | Medium](https://miro.medium.com/v2/resize:fit:920/1*yrMWEpUC-hXED7oGD0j2og.jpeg)
+---
 
-### 9\. Testes com Postman
+### 9\. <img src="https://github.com/onemarc/tech-icons/blob/main/icons/postman.svg" width="20"> Testes com Postman
 
 Realizaremos testes de todas as rodas da API utilizando o Postman, Os testes incluirão:
 
@@ -250,7 +281,7 @@ Realizaremos testes de todas as rodas da API utilizando o Postman, Os testes inc
 
 ---
 
-### 10\. Segurança
+### 10\.🔒 Segurança
 
 Devemos garantir a segurança da API REST mesmo não tendo dados extremamente sensíveis e mesmo em cenários onde o número de usuários é reduzido. As seguintes práticas recomendadas podem ser implementas para fortalecer a segurança:
 
@@ -277,8 +308,23 @@ Devemos garantir a segurança da API REST mesmo não tendo dados extremamente se
 
 ---
 
-### 11\. Considerações finais
+### 11. <img src="https://github.com/onemarc/tech-icons/blob/main/icons/docker.svg" width="20"> Utilização do Docker
+
+-> Utilizaremos o Docker como uma ferramenta essencial para o desenvolvimento e implantação da aplicação.
+
+#### O que é Docker?
+
+O Docker é uma plataforma que permite criar, implantar e executar aplicações em contêineres. Um contêiner é uma unidade leve e portátil que inclui tudo o que uma aplicação precisa para funcionar, como código, bibliotecas e dependências. Isso garante que a aplicação tenha um desempenho consistente em diferentes ambientes, desde o desenvolvimento até a produção.
+
+##### **Por que usar Docker?** [://stack.desenvolvedor.expert/appendix/docker/porque.html](https://stack.desenvolvedor.expert/appendix/docker/porque.html)
+
+---
+
+### 12\.✅ Considerações finais
 
 Neste documento, oferecemos uma visão abrangente do desenvolvimento da API REST para a aplicação **MigraHelp**, abordando desde a arquitetura até as práticas de segurança. Embora algumas modificações ainda sejam necessárias, discutiremos essas questões em conjunto com nosso orientador e a turma para garantir que todos estejam alinhados.
 
 Este documento servirá como um guia de referência para o desenvolvimento e manutenção da API **MigraHelp**, assegurando que todas as etapas do processo sejam seguidas de maneira organizada e eficiente.
+
+
+
