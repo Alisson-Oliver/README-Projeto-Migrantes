@@ -232,7 +232,7 @@ Abaixo estão as rotas principais para as operações CRUD:
 
 ### 7.🚦 Autenticação e Armazenamento de Tokens
 
-#### JSON (JSON WEB TOKEN)
+#### JWT (JSON WEB TOKEN)
 
 *   Para autenticar usuários, será gerado um token **JWT** no login. Esse token será armazenado no banco de dados local do dispositivo móvel.
     
