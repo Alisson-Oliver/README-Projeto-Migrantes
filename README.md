@@ -325,7 +325,37 @@ O Docker é uma plataforma que permite criar, implantar e executar aplicações 
 
 ---
 
-### 12.✅ Considerações finais
+### 12. 🌐 Integração com APIs Externas
+
+No desenvolvimento da aplicação MigraHelp, teremos a flexibilidade de integrar diversas APIs externas que poderão enriquecer a funcionalidade do nosso sistema. Dependendo da necessidade, implementaremos uma API externa que resolva o problema.
+
+#### Objetivos da Integração:
+
+*   **Aprimorar a Experiência do Usuário:** Ao utilizar APIs externas, podemos oferecer dados mais precisos e atualizados, melhorando a interação entre migrantes e organizações na plataforma.
+*   **Facilitar o Acesso à Informação:** Integrações com APIs de serviços poderão fornecer dados reais sobre serviços que considerarmos necessários.
+*   **Aumentar a Funcionalidade do App:** Através de APIs externas, será possível adicionar funcionalidades que auxiliem e agilizem algumas tarefas.
+
+#### Ferramentas e Tecnologias:
+
+Para a implementação das integrações, utilizaremos a biblioteca Axios, que nos permitirá fazer requisições HTTP de forma simplificada. O fluxo de integração com qualquer API externa seguirá as etapas abaixo:
+
+1.  **Requisição da API:** A aplicação realizará uma chamada à API externa utilizando Axios.
+2.  **Processamento da Resposta:** Os dados recebidos da API serão processados e integrados à lógica de negócios do sistema.
+3.  **Tratamento de Erros:** Implementaremos um tratamento para lidar com possíveis falhas nas requisições, garantindo que a aplicação continue a operar mesmo em caso de indisponibilidade de serviços externos.
+
+#### APIs Externas:
+
+##### **API de CEP**
+
+Para fornecer informações precisas sobre os endereços das organizações, a aplicação MigraHelp utilizará uma API externa de consulta de CEP. Essa integração permitirá que a aplicação obtenha dados como bairro, cidade e estado a partir de um CEP fornecido pelo usuário, facilitando o cadastro e a validação de endereços.
+
+Utilizaremos uma dessas APIs para consulta: `OpenCep`, `BrasilAPI`, `ViaCep` ou `APICep`.
+
+Essa abordagem nos permitirá adaptar a aplicação de acordo com as necessidades dos usuários.
+
+---
+
+### 13.✅ Considerações finais
 
 Neste documento, oferecemos uma visão abrangente do desenvolvimento da API REST para a aplicação **MigraHelp**, abordando desde a arquitetura até as práticas de segurança. Embora algumas modificações ainda sejam necessárias, discutiremos essas questões em conjunto com nosso orientador e a turma para garantir que todos estejam alinhados.
 
