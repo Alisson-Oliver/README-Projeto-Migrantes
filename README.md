@@ -1,6 +1,6 @@
 ## Documentação do Backend - MigraHelp
 
-### 1\.🔍 Introdução 
+### 1.🔍 Introdução
 
 O backend da aplicação **MigraHelp** será responsável por gerenciar todas as operações relacionadas aos usuários (migrantes e organizações), autenticação, armazenamento de dados e fornecimento da API REST para comunicação com dois aplicativos (um para as organizações e outro para os migrantes). A API REST será desenvolvida com **Node.js** e utilizaremos **PostgreSQL** como banco de dados relacional para armazenar as informações de usuários e entidades. O banco de dados será hospedado no **Tembo**.
 
@@ -8,20 +8,20 @@ O backend da aplicação **MigraHelp** será responsável por gerenciar todas as
 
 ---
 
-### 2\.⚙️ Ferramentas e Tecnologias
+### 2.⚙️ Ferramentas e Tecnologias
 
 Para a construção da API REST, utilizaremos **Node.js**. Os módulos que usaremos para o projeto são:
 
-*   **Express.js**: Framework para criar APIs REST, facilitando o roteamento e a manipulação de requisições.
-*   **pg**: Driver oficial do PostgreSQL para Node.js, que permite interações com o banco de dados.
-*   **Sequelize**: Um ORM (Object-Relational Mapping) que simplifica o gerenciamento de dados no banco de dados PostgreSQL, permitindo manipulações de tabelas e consultas de forma mais intuitiva.
-*   **JWT (JSON Web Tokens)**: Usado para a autenticação e criação de sessões seguras, permitindo que as credenciais dos usuários sejam transportadas de forma segura entre cliente e servidor.
-*   **BCrypt**: Responsável por criptografar (hashing) senhas antes de armazená-las no banco de dados, aumentando a segurança dos dados dos usuários.
-*   **Dotenv**: Gerenciador de variáveis de ambiente que permite armazenar de forma segura chaves secretas e credenciais do banco de dados sem deixá-las expostas no código.
-*   **Axios**: Biblioteca para consumir APIs externas, facilitando a comunicação entre a aplicação e serviços de terceiros.
-*   **Mocha/Chai**: Ferramentas de testes unitários que serão utilizadas juntas para garantir o funcionamento correto da API.
-*   **Joi**: Biblioteca de validação de dados que facilita a definição de esquemas para validar a estrutura e os tipos de dados recebidos nas requisições, garantindo que os dados atendam a critérios específicos antes de serem processados.
-*   **generate-password:** Módulo que permite gerar senhas seguras e personalizadas, oferecendo opções para especificar o comprimento da senha, incluir caracteres especiais, letras maiúsculas e minúsculas, e números.
+*   [**Express**](https://www.npmjs.com/package/express): Framework para criar APIs REST, facilitando o roteamento e a manipulação de requisições.
+*   [**pg**](https://www.npmjs.com/package/pg): Driver oficial do PostgreSQL para Node.js, que permite interações com o banco de dados.
+*   [**Sequelize**](www.npmjs.com/package/sequelize): Um ORM (Object-Relational Mapping) que simplifica o gerenciamento de dados no banco de dados PostgreSQL, permitindo manipulações de tabelas e consultas de forma mais intuitiva.
+*   [**JWT (JSON Web Tokens)**](https://www.npmjs.com/package/jsonwebtoken): Usado para a autenticação e criação de sessões seguras, permitindo que as credenciais dos usuários sejam transportadas de forma segura entre cliente e servidor.
+*   [**Bcrypt**](https://www.npmjs.com/package/bcrypt): Responsável por criptografar (hashing) senhas antes de armazená-las no banco de dados, aumentando a segurança dos dados dos usuários.
+*   [**Dotenv**](https://www.npmjs.com/package/dotenv): Gerenciador de variáveis de ambiente que permite armazenar de forma segura chaves secretas e credenciais do banco de dados sem deixá-las expostas no código.
+*   [**Axios**](https://www.npmjs.com/package/axios): Biblioteca para consumir APIs externas, facilitando a comunicação entre a aplicação e serviços de terceiros.
+*   [**Mocha**](https://www.npmjs.com/package/mocha)**/**[**Chai**](https://www.npmjs.com/package/chai): Ferramentas de testes unitários que serão utilizadas juntas para garantir o funcionamento correto da API.
+*   [**Joi**](https://www.npmjs.com/package/joi): Biblioteca de validação de dados que facilita a definição de esquemas para validar a estrutura e os tipos de dados recebidos nas requisições, garantindo que os dados atendam a critérios específicos antes de serem processados.
+*   [**generate-password**](https://www.npmjs.com/package/generate-password)**:** Módulo que permite gerar senhas seguras e personalizadas, oferecendo opções para especificar o comprimento da senha, incluir caracteres especiais, letras maiúsculas e minúsculas, e números.
 
 _Além dos módulos acima, outros pacotes poderão ser utilizados conforme necessário para atender aos requisitos do projeto._
 
@@ -69,7 +69,7 @@ Seguiremos boas práticas de validação e tratamento de erros, utilizando bibli
 
 ---
 
-### 4\.🗄️ Configurações do Banco de dados
+### 4.🗄️ Configurações do Banco de dados
 
 #### Banco de Dados: PostgreSQL
 
@@ -95,7 +95,7 @@ DB_SENHA=senhaSegura123
 
 ---
 
-### 5\.🗃️ Estrutura do Banco de Dados
+### 5.🗃️ Estrutura do Banco de Dados
 
 _O diagrama ainda está em fase de modificações…_
 
@@ -182,7 +182,7 @@ CREATE TABLE migrante(
 
 ---
 
-### 6\.🔁 Rotas principais da API
+### 6.🔁 Rotas principais da API
 
 Abaixo estão as rotas principais para as operações CRUD:
 
@@ -222,12 +222,15 @@ Abaixo estão as rotas principais para as operações CRUD:
 *   **401 Unauthorized**: Falha na autenticação.
 *   **404 Not Found**: Recurso não encontrado.
 *   **409 Conflict**: Conflito com o estado atual do recurso.
-*   → Todas as respostas serão acompanhadas com os seus devidos status.
-   ![HTTP: Response status code. Aprendi uma coisa: só se conhece… | by Maycon  Alves | React Brasil | Medium](https://miro.medium.com/v2/resize:fit:920/1*yrMWEpUC-hXED7oGD0j2og.jpeg)
+*   → Todas as respostas serão acompanhadas com os seus devidos status.  
+     
+    
+    ![HTTP: Response status code. Aprendi uma coisa: só se conhece… | by Maycon  Alves | React Brasil | Medium](https://miro.medium.com/v2/resize:fit:920/1*yrMWEpUC-hXED7oGD0j2og.jpeg)
+    
 
 ---
 
-### 7\.🚦 Autenticação e Armazenamento de Tokens
+### 7.🚦 Autenticação e Armazenamento de Tokens
 
 #### JSON (JSON WEB TOKEN)
 
@@ -247,7 +250,7 @@ Abaixo estão as rotas principais para as operações CRUD:
 
 ---
 
-### 8\.🛠️ Validação e Tratamento de Erros
+### 8.🛠️ Validação e Tratamento de Erros
 
 Utilizaremos middleware para validação de entradas e tratamento de erros.
 
@@ -281,7 +284,7 @@ Realizaremos testes de todas as rodas da API utilizando o Postman, Os testes inc
 
 ---
 
-### 10\.🔒 Segurança
+### 10.🔒 Segurança
 
 Devemos garantir a segurança da API REST mesmo não tendo dados extremamente sensíveis e mesmo em cenários onde o número de usuários é reduzido. As seguintes práticas recomendadas podem ser implementas para fortalecer a segurança:
 
@@ -308,9 +311,9 @@ Devemos garantir a segurança da API REST mesmo não tendo dados extremamente se
 
 ---
 
-### 11. <img src="https://github.com/onemarc/tech-icons/blob/main/icons/docker.svg" width="20"> Utilização do Docker
+### 11\. <img src="https://github.com/onemarc/tech-icons/blob/main/icons/docker.svg" width="20"> Utilização do Docker
 
--> Utilizaremos o Docker como uma ferramenta essencial para o desenvolvimento e implantação da aplicação.
+→ Utilizaremos o Docker como uma ferramenta essencial para o desenvolvimento e implantação da aplicação.
 
 #### O que é Docker?
 
@@ -320,11 +323,8 @@ O Docker é uma plataforma que permite criar, implantar e executar aplicações 
 
 ---
 
-### 12\.✅ Considerações finais
+### 12.✅ Considerações finais
 
 Neste documento, oferecemos uma visão abrangente do desenvolvimento da API REST para a aplicação **MigraHelp**, abordando desde a arquitetura até as práticas de segurança. Embora algumas modificações ainda sejam necessárias, discutiremos essas questões em conjunto com nosso orientador e a turma para garantir que todos estejam alinhados.
 
 Este documento servirá como um guia de referência para o desenvolvimento e manutenção da API **MigraHelp**, assegurando que todas as etapas do processo sejam seguidas de maneira organizada e eficiente.
-
-
-
