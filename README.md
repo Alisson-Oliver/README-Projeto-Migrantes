@@ -1,7 +1,7 @@
 ## Documentação MigraHelp | Back-End
 ### 1. 🔍 Introdução
 
-O backend da aplicação **MigraHelp** será responsável por gerenciar todas as operações relacionadas aos usuários (migrantes e organizações), autenticação, armazenamento de dados e fornecimento da API REST para comunicação com dois aplicativos. A API REST será desenvolvida com **Node.js** e utilizaremos **PostgreSQL** como banco de dados relacional para armazenar as informações de usuários e entidades. O banco de dados será hospedado no **Tembo**.
+O back-end da aplicação **MigraHelp** será responsável por gerenciar todas as operações relacionadas aos usuários (migrantes e organizações), autenticação, armazenamento de dados e fornecimento da API REST para comunicação com dois aplicativos. A API REST será desenvolvida com **Node.js** e utilizaremos **PostgreSQL** como banco de dados relacional para armazenar as informações de usuários e entidades. O banco de dados será hospedado no **Tembo**.
 
 **Objetivo do projeto:** trata-se de um app para conectar o migrante às organizações comunitárias e instituições e ongs de amparo ao migrante, e uma agenda cultural para integrar o migrante à comunidade de Salvador.
 
