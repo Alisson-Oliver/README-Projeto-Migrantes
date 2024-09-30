@@ -1,6 +1,6 @@
 ## Documentação do Backend - MigraHelp
 
-### 1.🔍 Introdução
+### 1. 🔍 Introdução
 
 O backend da aplicação **MigraHelp** será responsável por gerenciar todas as operações relacionadas aos usuários (migrantes e organizações), autenticação, armazenamento de dados e fornecimento da API REST para comunicação com dois aplicativos. A API REST será desenvolvida com **Node.js** e utilizaremos **PostgreSQL** como banco de dados relacional para armazenar as informações de usuários e entidades. O banco de dados será hospedado no **Tembo**.
 
@@ -8,7 +8,7 @@ O backend da aplicação **MigraHelp** será responsável por gerenciar todas as
 
 ---
 
-### 2.⚙️ Ferramentas e Tecnologias
+### 2. ⚙️ Ferramentas e Tecnologias
 
 Para a construção da API REST, utilizaremos **Node.js**. Os módulos que usaremos para o projeto são:
 
@@ -69,7 +69,7 @@ Seguiremos boas práticas de validação e tratamento de erros, utilizando bibli
 
 ---
 
-### 4.🗄️ Configurações do Banco de dados
+### 4. 🗄️ Configurações do Banco de dados
 
 #### Banco de Dados: PostgreSQL
 
@@ -79,6 +79,7 @@ Seguiremos boas práticas de validação e tratamento de erros, utilizando bibli
 *   Dialeto: `postgres`
 *   Usuário: `db_user`
 *   Senha: `db_password`
+*   CA(certificado de autoridade): `db_certificado`
 
 As variáveis de ambiente (`DB_NOME, DB_USUARIO, DB_SENHA, DB_HOST`) serão definidas em um arquivo `.env`.
 
@@ -93,9 +94,21 @@ DB_USUARIO=postgres
 DB_SENHA=senhaSegura123
 ```
 
+#### Certificado SSL no Banco de Dados
+
+A comunicação entre a aplicação **MigraHelp** e o **banco de dados PostgreSQL** será protegida através de **SSL**. Isso garante que todos os dados trafegados entre o backend e o banco de dados estejam criptografados, protegendo contra ataques de interceptação e man-in-the-middle. A utilização de SSL é uma prática recomendada em ambientes onde a segurança dos dados é uma prioridade, especialmente ao lidar com informações sensíveis, como as dos migrantes e organizações.
+
+No **arquivo de configuração do Sequelize**, a conexão com o PostgreSQL incluirá a configuração para o uso de SSL. As variáveis de ambiente serão usadas para armazenar as credenciais e certificados necessários, garantindo que as chaves e os certificados SSL não estejam expostos no código. Além disso o arquivo **ca.crt**, ficará no diretório `config`.
+
+#### Exemplo no .env:
+
+```plaintext
+DB_CERT_CAMINHO=/caminho/para/diretorio/ca-cert.crt
+```
+
 ---
 
-### 5.🗃️ Estrutura do Banco de Dados
+### 5. 🗃️ Estrutura do Banco de Dados
 
 _O diagrama ainda está em fase de modificações…_
 
@@ -182,7 +195,7 @@ CREATE TABLE migrante(
 
 ---
 
-### 6.🔁 Rotas principais da API
+### 6. 🔁 Rotas principais da API
 
 Abaixo estão as rotas principais para as operações CRUD:
 
@@ -222,15 +235,14 @@ Abaixo estão as rotas principais para as operações CRUD:
 *   **401 Unauthorized**: Falha na autenticação.
 *   **404 Not Found**: Recurso não encontrado.
 *   **409 Conflict**: Conflito com o estado atual do recurso.
-*   → Todas as respostas serão acompanhadas com os seus devidos status.  
-     
+*   → Todas as respostas serão acompanhadas com os seus devidos status.  
     
     ![HTTP: Response status code. Aprendi uma coisa: só se conhece… | by Maycon  Alves | React Brasil | Medium](https://miro.medium.com/v2/resize:fit:920/1*yrMWEpUC-hXED7oGD0j2og.jpeg)
     
 
 ---
 
-### 7.🚦 Autenticação e Armazenamento de Tokens
+### 7. 🚦 Autenticação e Armazenamento de Tokens
 
 #### JWT (JSON WEB TOKEN)
 
@@ -250,17 +262,10 @@ Abaixo estão as rotas principais para as operações CRUD:
 
 ---
 
-### 8.🛠️ Validação e Tratamento de Erros
+### 8. 🛠️ Validação e Tratamento de Erros
 
-Utilizaremos middleware para validação de entradas e tratamento de erros.
-
-#### Validação de dados
-
-→ Utilizaremos o **Joi** para fazer a validação.
-
-### Tratamento de erros:
-
-→ Um middleware será utilizado para capturar erros não tratados e retornar respostas adequadas.
+*   Um middleware será utilizado para capturar erros não tratados e retornar respostas adequadas.  
+    → Utilizaremos o **Joi** para fazer a validação.
 
 #### Fluxo proposto para o cadastro de um usuário:
 
@@ -271,7 +276,7 @@ Utilizaremos middleware para validação de entradas e tratamento de erros.
 
 ---
 
-### 9\. <img src="https://github.com/onemarc/tech-icons/blob/main/icons/postman.svg" width="20"> Testes com Postman
+### 9\. <img src="https://github.com/onemarc/tech-icons/blob/main/icons/postman.svg" width="20" height="20" alt="Postman Icon"> Testes com Postman
 
 Realizaremos testes de todas as rodas da API utilizando o Postman, Os testes incluirão:
 
@@ -284,7 +289,7 @@ Realizaremos testes de todas as rodas da API utilizando o Postman, Os testes inc
 
 ---
 
-### 10.🔒 Segurança
+### 10. 🔒 Segurança
 
 Devemos garantir a segurança da API REST mesmo não tendo dados extremamente sensíveis e mesmo em cenários onde o número de usuários é reduzido. As seguintes práticas recomendadas podem ser implementas para fortalecer a segurança:
 
@@ -311,7 +316,7 @@ Devemos garantir a segurança da API REST mesmo não tendo dados extremamente se
 
 ---
 
-### 11\. <img src="https://github.com/onemarc/tech-icons/blob/main/icons/docker.svg" width="20"> Utilização do Docker
+### 11\. <img src="https://github.com/onemarc/tech-icons/blob/main/icons/docker.svg" width="20" height="20" alt="Docker Icon"> Utilização do Docker
 
 → Utilizaremos o Docker como uma ferramenta essencial para o desenvolvimento e implantação da aplicação.
 
