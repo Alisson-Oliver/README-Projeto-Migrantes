@@ -99,7 +99,7 @@ DB_SENHA=senhaSegura123
 
 _O diagrama ainda está em fase de modificações…_
 
-![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/3d798371b542bc37d8af8946ce90335db213688854af974f.png)
+![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/951d4588b616e28f1bc5120b9051495261185d1d54749ce9.png)
 
 Diagrama do Banco de dados: [https://lucid.app/lucidchart/ac75eb44-b924-494b-b852-c9fd823b9d75/view](https://lucid.app/lucidchart/ac75eb44-b924-494b-b852-c9fd823b9d75/view)
 
