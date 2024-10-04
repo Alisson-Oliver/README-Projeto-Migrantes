@@ -1,19 +1,18 @@
-## Documentação MigraHelp | Back-End
+## Documentação Mhelp | Back-End
 
 ### 1\. 🔍 Introdução
 
-O back-end da aplicação **MigraHelp** será responsável por gerenciar todas as operações relacionadas aos usuários (migrantes e organizações), autenticação, armazenamento de dados e fornecimento da API REST para comunicação com dois aplicativos. A API REST será desenvolvida com **Node.js** e utilizaremos **PostgreSQL** como banco de dados relacional para armazenar as informações de usuários e entidades. O banco de dados, a API REST serão hospedados no **Supabase**.
+O back-end da aplicação **Mhelp** será responsável por gerenciar todas as operações relacionadas aos usuários (migrantes e organizações), autenticação, armazenamento de dados e fornecimento da API REST para comunicação com dois aplicativos. A API REST será desenvolvida com **Node.js** e utilizaremos **PostgreSQL** como banco de dados relacional para armazenar as informações de usuários e entidades. O banco de dados, a API REST serão hospedados no **Supabase**.
 
 **Objetivo do projeto:** trata-se de um app para conectar o migrante às organizações comunitárias e instituições e ongs de amparo ao migrante.
 
-### 2\. ⚙️ Ferramentas e Tecnologias - Em reformulação…
-
+### 2\. ⚙️ Ferramentas e Tecnologias 
 Para a construção da API REST, utilizaremos **Node.js**. Os módulos que usaremos para o projeto são:
 
 *   [**Express**](https://www.npmjs.com/package/express): Framework para criar APIs REST, facilitando o roteamento e a manipulação de requisições.
 *   [**pg**](https://www.npmjs.com/package/pg): Driver oficial do PostgreSQL para Node.js, que permite interações com o banco de dados.
 *   [**Sequelize**](www.npmjs.com/package/sequelize): Um ORM (Object-Relational Mapping) que simplifica o gerenciamento de dados no banco de dados PostgreSQL, permitindo manipulações de tabelas e consultas de forma mais intuitiva.
-*   [**JWT (JSON Web Tokens)**](https://www.npmjs.com/package/jsonwebtoken): Usado para a autenticação e criação de sessões seguras, permitindo que as credenciais dos usuários sejam transportadas de forma segura entre cliente e servidor. **(CASO O SUPABASE NÃO DISPONIBILIZE)**
+*   [**JWT (JSON Web Tokens)**](https://www.npmjs.com/package/jsonwebtoken): Usado para a autenticação e criação de sessões seguras, permitindo que as credenciais dos usuários sejam transportadas de forma segura entre cliente e servidor.
 *   [**Bcrypt**](https://www.npmjs.com/package/bcrypt): Responsável por criptografar (hashing) senhas antes de armazená-las no banco de dados, aumentando a segurança dos dados dos usuários.
 *   [**Dotenv**](https://www.npmjs.com/package/dotenv): Gerenciador de variáveis de ambiente que permite armazenar de forma segura chaves secretas e credenciais do banco de dados sem deixá-las expostas no código.
 *   [**Axios**](https://www.npmjs.com/package/axios): Biblioteca para consumir APIs externas, facilitando a comunicação entre a aplicação e serviços de terceiros.
@@ -95,7 +94,7 @@ DB_SENHA=senhaSegura123
 
 #### Certificado SSL no Banco de Dados
 
-A comunicação entre a aplicação **MigraHelp** e o **banco de dados PostgreSQL** será protegida através de **SSL**. Isso garante que todos os dados trafegados entre o backend e o banco de dados estejam criptografados, protegendo contra ataques de interceptação e man-in-the-middle. A utilização de SSL é uma prática recomendada em ambientes onde a segurança dos dados é uma prioridade, especialmente ao lidar com informações sensíveis, como as dos migrantes e organizações.
+A comunicação entre a aplicação **Mhelp** e o **banco de dados PostgreSQL** será protegida através de **SSL**. Isso garante que todos os dados trafegados entre o backend e o banco de dados estejam criptografados, protegendo contra ataques de interceptação e man-in-the-middle. A utilização de SSL é uma prática recomendada em ambientes onde a segurança dos dados é uma prioridade, especialmente ao lidar com informações sensíveis, como as dos migrantes e organizações.
 
 No **arquivo de configuração do Sequelize**, a conexão com o PostgreSQL incluirá a configuração para o uso de SSL. As variáveis de ambiente serão usadas para armazenar as credenciais e certificados necessários, garantindo que as chaves e os certificados SSL não estejam expostos no código. Além disso o arquivo **ca.crt**, ficará no diretório `config`.
 
@@ -297,8 +296,7 @@ Abaixo estão as rotas principais para as operações CRUD:
 
 ---
 
-### 7\. 🚦 Autenticação e Armazenamento de Tokens - Em reformulação…
-
+### 7\. 🚦 Autenticação e Armazenamento de Tokens
 #### JWT (JSON WEB TOKEN)
 
 *   Para autenticar usuários, será gerado um token **JWT** no login. Esse token será armazenado no banco de dados local do dispositivo móvel.
@@ -317,7 +315,7 @@ Abaixo estão as rotas principais para as operações CRUD:
 
 ---
 
-### 8\. 🛠️ Validação e Tratamento de Erros - Em reformulação…
+### 8\. 🛠️ Validação e Tratamento de Erros
 
 *   Um middleware será utilizado para capturar erros não tratados e retornar respostas adequadas.  
     → Utilizaremos o **Joi** para fazer a validação.
@@ -344,18 +342,18 @@ Realizaremos testes de todas as rodas da API utilizando o Postman, Os testes inc
 
 ---
 
-### 10\. 🔒 Segurança - Em reformulação…
+### 10\. 🔒 Segurança 
 
 Devemos garantir a segurança da API REST mesmo não tendo dados extremamente sensíveis e mesmo em cenários onde o número de usuários é reduzido. As seguintes práticas recomendadas podem ser implementas para fortalecer a segurança:
 
 #### Autenticação e Autorização
 
-*   Uso de Tokens JWT;
+*   Uso de Tokens JWT fornecidos pelo Supabase;
 *   Níveis de Acesso: Definir diferentes níveis de acesso para usuários e administradores.
 
 #### Criptografia de dados
 
-*   Hash de Senhas: Utilizaremos o bcrypt para isso. A senha será gerada possuindo 8 caracteres. Ex: 12737193.
+*   Hash de Senhas: Utilizaremos o bcrypt para isso. A senha será gerada possuindo 12 caracteres. Ex: 12737193.
 
 #### Validação de dados
 
@@ -385,7 +383,7 @@ O Docker é uma plataforma que permite criar, implantar e executar aplicações 
 
 ### 12\. 🌐 Integração com APIs Externas
 
-No desenvolvimento da aplicação MigraHelp, teremos a flexibilidade de integrar diversas APIs externas que poderão enriquecer a funcionalidade do nosso sistema. Dependendo da necessidade, implementaremos uma API externa que resolva o problema.
+No desenvolvimento da aplicação Mhelp, teremos a flexibilidade de integrar diversas APIs externas que poderão enriquecer a funcionalidade do nosso sistema. Dependendo da necessidade, implementaremos uma API externa que resolva o problema.
 
 #### Objetivos da Integração:
 
@@ -405,7 +403,7 @@ Para a implementação das integrações, utilizaremos a biblioteca Axios, que n
 
 ##### **API de CEP**
 
-Para fornecer informações precisas sobre os endereços das organizações, a aplicação MigraHelp utilizará uma API externa de consulta de CEP. Essa integração permitirá que a aplicação obtenha dados como bairro, cidade e estado a partir de um CEP fornecido pelo usuário, facilitando o cadastro e a validação de endereços.
+Para fornecer informações precisas sobre os endereços das organizações, a aplicação Mhelp utilizará uma API externa de consulta de CEP. Essa integração permitirá que a aplicação obtenha dados como bairro, cidade e estado a partir de um CEP fornecido pelo usuário, facilitando o cadastro e a validação de endereços.
 
 Utilizaremos a API **ViaCep** para buscar os dados de endereço.
 
@@ -415,6 +413,6 @@ Essa abordagem nos permitirá adaptar a aplicação de acordo com as necessidade
 
 ### 13.✅ Considerações finais
 
-Neste documento, oferecemos uma visão abrangente do desenvolvimento da API REST para a aplicação **MigraHelp**, abordando desde a arquitetura até as práticas de segurança. Embora algumas modificações ainda sejam necessárias, discutiremos essas questões em conjunto com nosso orientador e a turma para garantir que todos estejam alinhados.
+Neste documento, oferecemos uma visão abrangente do desenvolvimento da API REST para a aplicação **Mhelp**, abordando desde a arquitetura até as práticas de segurança. Embora algumas modificações ainda sejam necessárias, discutiremos essas questões em conjunto com nosso orientador e a turma para garantir que todos estejam alinhados.
 
-Este documento servirá como um guia de referência para o desenvolvimento e manutenção da API **MigraHelp**, assegurando que todas as etapas do processo sejam seguidas de maneira organizada e eficiente.
+Este documento servirá como um guia de referência para o desenvolvimento e manutenção da API **Mhelp**, assegurando que todas as etapas do processo sejam seguidas de maneira organizada e eficiente.
