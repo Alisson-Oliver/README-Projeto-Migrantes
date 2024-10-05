@@ -57,7 +57,7 @@ Seguiremos boas práticas de validação e tratamento de erros, utilizando bibli
 5.  **routes/**:
     *   Define as rotas da API. Cada arquivo contém as rotas relacionadas a uma entidade, como `migrantes`, `autenticação`, etc.
 6.  **services/**:
-    *   Contém a lógica de negócio que é chamada pelos controladores. Eles geralmente lidam com operações mais complexas que envolvem interações com o banco de dados e outras camadas da aplicação. **(PROVAVELMENTE NÃO PRECISARÁ)**
+    *   Contém a lógica de negócio que é chamada pelos controladores. Eles geralmente lidam com operações mais complexas que envolvem interações com o banco de dados e outras camadas da aplicação.
 7.  **tests/**:
     *   Armazena os testes unitários e de integração. Podemos utilizar bibliotecas como `Mocha` e `Chai` para testar as funcionalidades da API.
 8.  **utils/**:
