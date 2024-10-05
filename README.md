@@ -62,7 +62,7 @@ Seguiremos boas práticas de validação e tratamento de erros, utilizando bibli
     *   Armazena os testes unitários e de integração. Podemos utilizar bibliotecas como `Mocha` e `Chai` para testar as funcionalidades da API.
 8.  **utils/**:
     *   Contém funções auxiliares e utilitárias, como validadores e constantes usadas ao longo do projeto.
-9.  **app.js**:
+9.  **index.js**:
     *   Arquivo principal da aplicação. Aqui o servidor é configurado, middlewares são aplicados e as rotas são carregadas.
 
 ---
