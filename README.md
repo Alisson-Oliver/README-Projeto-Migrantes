@@ -411,7 +411,32 @@ Essa abordagem nos permitirá adaptar a aplicação de acordo com as necessidade
 
 ---
 
-### 13.✅ Considerações finais
+### 13\. 📄 Arquivos PDF
+
+Os estudantes de Relações Internacionais terão a possibilidade de enviar manuais do migrante para auxiliar os migrantes em diversas áreas. Esses manuais serão recursos importantes que proporcionarão informações práticas e relevantes, contribuindo para uma melhor adaptação e integração dos migrantes em suas novas comunidades.
+
+Para facilitar o compartilhamento desses documentos, iremos criar rotas que permitirão o upload e o download desses arquivos. 
+
+→ Os estudantes poderão realizar o upload dos manuais, e os migrantes terão a opção de baixá-los facilmente.
+
+#### Estrutura da API
+
+A estrutura da API incluirá as seguintes rotas principais:
+
+*   **Upload de Arquivos:** Uma rota que permitirá aos estudantes fazer o upload dos manuais em formato PDF. Essa rota aceitará o arquivo, juntamente com informações adicionais, como título e descrição.
+*   **Download de Arquivos:** Uma rota que permitirá que os migrantes acessem e baixem os manuais disponíveis. Essa rota listará todos os arquivos enviados, apresentando o título, a descrição e um botão de download.
+
+#### Utilização do Supabase
+
+Para gerenciar os arquivos, o Supabase disponibiliza os **Buckets**, que são espaços de armazenamento na nuvem. Os Buckets permitem o armazenamento e a organização de arquivos de maneira eficiente e segura. Com o uso dos Buckets do Supabase, poderemos:
+
+1.  **Armazenar Arquivos:** Os PDFs enviados pelos estudantes serão armazenados de forma estruturada nos Buckets, facilitando o acesso e a gestão dos arquivos.
+2.  **Gerenciar Permissões:** Poderemos configurar as permissões de acesso, garantindo que apenas usuários autenticados (estudantes e migrantes) possam realizar upload ou download dos documentos.
+3.  **Integrar com o Banco de Dados:** As informações sobre os arquivos (como URL, título e descrição) serão armazenadas em um banco de dados gerenciado pelo Supabase, permitindo consultas rápidas e eficientes.
+
+---
+
+### 14.✅ Considerações finais
 
 Neste documento, oferecemos uma visão abrangente do desenvolvimento da API REST para a aplicação **Mhelp**, abordando desde a arquitetura até as práticas de segurança. Embora algumas modificações ainda sejam necessárias, discutiremos essas questões em conjunto com nosso orientador e a turma para garantir que todos estejam alinhados.
 
